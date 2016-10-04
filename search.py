@@ -25,19 +25,16 @@ index = cPickle.loads(open("index").read())
 searcher = Searcher(index)
 
 # Directory
-directory = "images"
+directory = "images"  # "faces/s1"
 
 # loop over images in the index -- we will use each one as
 # a query image
 for (query, queryFeatures) in index.items():
     # perform the search using the current query
     results = searcher.search(queryFeatures)
-    print "Results: ", results
     # load the query image and display it
     path = directory + "/%s" % (query)
-    print "Path: ", path
     queryImage = cv2.imread(path)
-    print "QueryImage: ", queryImage
     cv2.imshow("Query", queryImage)
     print "query: %s" % (query)
 
@@ -45,6 +42,8 @@ for (query, queryFeatures) in index.items():
     # we have a total of 25 images in the index, but let's only
     # display the top 10 results; 5 images per montage, with
     # images that are 400x166 pixels
+    # montageA = np.zeros((92 * 5, 112, 3), dtype="uint8")
+    # montageB = np.zeros((92 * 5, 112, 3), dtype="uint8")
     montageA = np.zeros((166 * 5, 400, 3), dtype="uint8")
     montageB = np.zeros((166 * 5, 400, 3), dtype="uint8")
 
@@ -52,9 +51,11 @@ for (query, queryFeatures) in index.items():
     for j in xrange(0, 10):
         # grab the result (we are using row-major order) and
         # load the result image
+        print "J: ", j
         (score, imageName) = results[j]
         path = directory + "/%s" % (imageName)
         result = cv2.imread(path)
+        print "Result: ", result
         print "\t%d. %s : %.3f" % (j + 1, imageName, score)
 
         # check to see if the first montage should be used

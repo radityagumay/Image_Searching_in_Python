@@ -30,10 +30,11 @@ index = {}
 desc = RGBHistogram([8, 8, 8])
 
 # Directory
-directory = "images"
+directory = "images" #"faces/s1"
+extension = ".png" #".pgm"
 
 # use glob to grab the image paths and loop over them
-for imagePath in glob.glob(directory + "/*.png"):
+for imagePath in glob.glob(directory + "/*" + extension):
     # extract our unique image ID (i.e. the filename)
     k = imagePath[imagePath.rfind("/") + 1:]
 
