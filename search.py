@@ -25,17 +25,19 @@ index = cPickle.loads(open("index").read())
 searcher = Searcher(index)
 
 # Directory
-directory = "faces/*"
+directory = "images"
 
 # loop over images in the index -- we will use each one as
 # a query image
 for (query, queryFeatures) in index.items():
     # perform the search using the current query
     results = searcher.search(queryFeatures)
-
+    print "Results: ", results
     # load the query image and display it
     path = directory + "/%s" % (query)
+    print "Path: ", path
     queryImage = cv2.imread(path)
+    print "QueryImage: ", queryImage
     cv2.imshow("Query", queryImage)
     print "query: %s" % (query)
 

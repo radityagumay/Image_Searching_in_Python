@@ -30,7 +30,7 @@ index = {}
 desc = RGBHistogram([8, 8, 8])
 
 # Directory
-directory = "faces/*"
+directory = "images"
 
 # use glob to grab the image paths and loop over them
 for imagePath in glob.glob(directory + "/*.pgm"):
