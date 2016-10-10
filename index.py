@@ -30,14 +30,14 @@ index = {}
 desc = RGBHistogram([8, 8, 8])
 
 # Directory
-directory = "images" #"faces/s1"
-extension = ".png" #".pgm"
+directory = "mammogram"
+extension = ".pgm"
 
 # use glob to grab the image paths and loop over them
 for imagePath in glob.glob(directory + "/*" + extension):
     # extract our unique image ID (i.e. the filename)
     k = imagePath[imagePath.rfind("/") + 1:]
-
+    print "k", k
     # load the image, describe it using our RGB histogram
     # descriptor, and update the index
     image = cv2.imread(imagePath)
